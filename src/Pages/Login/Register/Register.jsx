@@ -1,14 +1,34 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import car from "../../../assets/login/car.gif"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [generalError, setGeneralError] = useState('')
-    const handleRegistration = data => {
-        console.log(data)
+    const [generalError, setGeneralError] = useState('');
+    const { registration, updateUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleRegistration = async data => {
+        const res = await registration(data.email, data.password);
+        const updatedUser = await updateUser(data.name)
+        const user = res.user;
+
+        const userInfo = {
+            name: user.displayName,
+            email: user.email,
+            role: data.role
+        }
+
+        const result = await axios.put(`http://localhost:5000/users?email=${data.email}`, userInfo)
+        if (result.data.success) {
+            toast.success("Login successful");
+            navigate('/')
+        }
     }
     return (
         <div className="hero my-2 md:my-12">
@@ -51,8 +71,8 @@ const Register = () => {
                             <span className="label-text">Select Your Role</span>
                         </label>
                         <select className="select select-bordered w-full" {...register("role")}>
-                            <option>Buyer</option>
-                            <option>Seller</option>
+                            <option selected>buyer</option>
+                            <option>seller</option>
                         </select>
                         <input type="submit" value="Sign Up" className='btn btn-primary w-full mt-3' />
                     </form>

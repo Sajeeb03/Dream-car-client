@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { FaGoogle } from "react-icons/fa";
@@ -9,7 +10,16 @@ const SocialLogin = ({ setGeneralError }) => {
     const handleGoogleSignIn = async () => {
         try {
             const res = await googleSignIn(googleProvider);
-            console.log(res.user)
+            // console.log(res.user)
+            const user = res.user;
+
+            const userInfo = {
+                name: user.displayName,
+                email: user.email,
+                role: "buyer"
+            }
+            axios.put(`http://localhost:5000/users?email=${user.email}`, userInfo)
+                .then(res => console.log(res.data))
             setGeneralError('')
         } catch (error) {
             setGeneralError(error.message)

@@ -4,16 +4,33 @@ import ReactSwitch from 'react-switch';
 import { ToggleContext } from '../../../Contexts/ThemeSwitch/ThemeSwitch';
 import lightLogo from '../../../assets/lightLogo.png'
 import darkLogo from '../../../assets/darkLogo.png'
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import { async } from '@firebase/util';
 const Header = () => {
     const { theme, setTheme } = useContext(ToggleContext);
+    const { user, logOut } = useContext(AuthContext);
     const toggleTheme = () => {
         theme === "dark" ? setTheme("") : setTheme("dark");
+    }
+
+    const handleSignOut = async () => {
+        try {
+            const res = await logOut();
+        } catch (error) {
+            console.error(error)
+        }
     }
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/products'>Products</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
-        <li><Link to='/login'>Sign In</Link></li>
+        {
+            !user?.uid ? <li><Link to='/login'>Sign In</Link></li> :
+                <>
+                    <li><Link to='/dashboard'>Dashboard</Link></li>
+                    <li><Link to='/login' onClick={handleSignOut}>Sign Out</Link></li>
+                </>
+        }
     </>
     return (
         <div className="navbar bg-base-100 dark:bg-primary shadow-sm">

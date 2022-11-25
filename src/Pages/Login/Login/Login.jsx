@@ -15,7 +15,7 @@ const Login = () => {
                 <div className="w-1/2 hidden md:block">
                     <img className='rounded-lg' src={car} alt="" />
                 </div>
-                <div className="card flex-shrink-0 md:w-1/2 shadow-2xl bg-base-100 p-12">
+                <div className="card flex-shrink-0 md:w-1/2 shadow-2xl bg-base-100 p-8">
                     <div>
                         <h2 className="text-4xl uppercase text-center font-bold text-primary">Sign In</h2>
                     </div>
