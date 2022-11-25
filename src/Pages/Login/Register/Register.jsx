@@ -11,12 +11,12 @@ const Register = () => {
         console.log(data)
     }
     return (
-        <div className="hero my-12">
+        <div className="hero my-2 md:my-12">
             <div className="hero-content">
-                <div className="w-1/2">
+                <div className="w-1/2 hidden md:block">
                     <img className='rounded-lg' src={car} alt="" />
                 </div>
-                <div className="card flex-shrink-0 w-1/2 shadow-2xl bg-base-100 p-8">
+                <div className="card flex-shrink-0 md:w-1/2 shadow-2xl bg-base-100 p-8">
                     <div>
                         <h2 className="text-4xl uppercase text-center font-bold text-primary">Sign Up</h2>
                     </div>
@@ -57,11 +57,11 @@ const Register = () => {
                         <input type="submit" value="Sign Up" className='btn btn-primary w-full mt-3' />
                     </form>
                     {
-                        generalError && <p className="text-error">{generalError}</p>
+                        generalError && <p className="text-error text-center">{generalError}</p>
                     }
                     <p className='text-center mt-2'>Already have an account? <Link to="/login" className='text-blue-400'>Sing in now</Link></p>
                     <div className="divider divider-vertical">OR</div>
-                    <SocialLogin />
+                    <SocialLogin setGeneralError={setGeneralError} />
                 </div>
             </div>
         </div>

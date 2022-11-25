@@ -1,9 +1,23 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import { FaGoogle } from "react-icons/fa";
-const SocialLogin = () => {
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+const SocialLogin = ({ setGeneralError }) => {
+    const googleProvider = new GoogleAuthProvider();
+    const { googleSignIn } = useContext(AuthContext);
+
+    const handleGoogleSignIn = async () => {
+        try {
+            const res = await googleSignIn(googleProvider);
+            console.log(res.user)
+            setGeneralError('')
+        } catch (error) {
+            setGeneralError(error.message)
+        }
+    }
     return (
         <div className=''>
-            <button className='btn btn-outline btn-primary w-full'><FaGoogle className='mr-3' /> Sign in with Google</button>
+            <button onClick={handleGoogleSignIn} className='btn btn-outline btn-primary w-full'><FaGoogle className='mr-3' /> Sign in with Google</button>
         </div>
     );
 };

@@ -10,12 +10,12 @@ const Login = () => {
         console.log(data)
     }
     return (
-        <div className="hero my-12">
+        <div className="hero my-2 md:my-12">
             <div className="hero-content">
-                <div className="w-1/2">
+                <div className="w-1/2 hidden md:block">
                     <img className='rounded-lg' src={car} alt="" />
                 </div>
-                <div className="card flex-shrink-0 w-1/2 shadow-2xl bg-base-100 p-12">
+                <div className="card flex-shrink-0 md:w-1/2 shadow-2xl bg-base-100 p-12">
                     <div>
                         <h2 className="text-4xl uppercase text-center font-bold text-primary">Sign In</h2>
                     </div>
@@ -44,11 +44,11 @@ const Login = () => {
                         <input type="submit" value="Sign In" className='btn btn-primary w-full mt-3' />
                     </form>
                     {
-                        generalError && <p className="text-error">{generalError}</p>
+                        generalError && <p className="text-error text-center">{generalError}</p>
                     }
                     <p className='text-center mt-2'>New to Dream Car? <Link to="/register" className='text-blue-400'>Create an account</Link></p>
                     <div className="divider divider-vertical">OR</div>
-                    <SocialLogin />
+                    <SocialLogin setGeneralError={setGeneralError}></SocialLogin>
                 </div>
             </div>
         </div>

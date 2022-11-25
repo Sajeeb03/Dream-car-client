@@ -13,12 +13,12 @@ const ThemeSwitch = ({ children }) => {
         }
     }, [theme])
 
-    const authInfo = {
+    const contextData = {
         theme, setTheme
     }
 
     return (
-        <ToggleContext.Provider value={authInfo}>
+        <ToggleContext.Provider value={contextData}>
             {children}
         </ToggleContext.Provider>
     );
