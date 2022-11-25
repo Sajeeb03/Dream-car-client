@@ -26,7 +26,7 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to={`/`} className="w-64"><img src={theme === "dark" ? darkLogo : lightLogo} alt="main logo" /></Link>
+                <Link to={`/`} className="w-64 -m-8"><img src={theme === "dark" ? darkLogo : lightLogo} alt="main logo" /></Link>
             </div>
             <div className="navbar-end">
                 <div className='mr-3 flex gap-3'>
