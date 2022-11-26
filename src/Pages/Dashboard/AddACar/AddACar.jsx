@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { FaHome } from 'react-icons/fa';
 import Loader from '../../../components/Loader';
 
 const AddACar = () => {
@@ -24,7 +25,7 @@ const AddACar = () => {
         console.log(data);
     }
     return (
-        <div className='dark:bg-blue-300 my-4 w-2/3 p-6'>
+        <div className='dark:bg-blue-300 my-4 md:w-2/3 p-6'>
             <h2 className="text-2xl font-bold">Add Your Car</h2>
             <form className='' onSubmit={handleSubmit(handleAddACar)}>
                 <label className="label">

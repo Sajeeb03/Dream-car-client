@@ -11,6 +11,7 @@ import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import SellerRoute from "./SellerRoute";
 
 const router = createBrowserRouter([
     {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/dashboard/addacar",
-                element: <AddACar />
+                element: <SellerRoute><AddACar /></SellerRoute>
             },
             {
                 path: "/dashboard/orders",
