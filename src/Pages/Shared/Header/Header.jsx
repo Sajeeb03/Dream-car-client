@@ -5,7 +5,7 @@ import { ToggleContext } from '../../../Contexts/ThemeSwitch/ThemeSwitch';
 import lightLogo from '../../../assets/lightLogo.png'
 import darkLogo from '../../../assets/darkLogo.png'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
-import { async } from '@firebase/util';
+
 const Header = () => {
     const { theme, setTheme } = useContext(ToggleContext);
     const { user, logOut } = useContext(AuthContext);
