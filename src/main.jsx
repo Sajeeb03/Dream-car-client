@@ -5,6 +5,7 @@ import AuthProvider from './Contexts/AuthProvider/AuthProvider'
 import ThemeSwitch from './Contexts/ThemeSwitch/ThemeSwitch'
 import './index.css'
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-day-picker/dist/style.css';
 import { ToastContainer } from 'react-toastify'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 const queryClient = new QueryClient()

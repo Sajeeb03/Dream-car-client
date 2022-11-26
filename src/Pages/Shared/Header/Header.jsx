@@ -27,7 +27,7 @@ const Header = () => {
         {
             !user?.uid ? <li><Link to='/login'>Sign In</Link></li> :
                 <>
-                    <li><Link to='/dashboard'>Dashboard</Link></li>
+                    <li><Link to='/dashboard/'>Dashboard</Link></li>
                     <li><Link to='/login' onClick={handleSignOut}>Sign Out</Link></li>
                 </>
         }
