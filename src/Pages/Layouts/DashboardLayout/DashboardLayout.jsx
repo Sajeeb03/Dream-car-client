@@ -7,7 +7,7 @@ const DashboardLayout = () => {
         <div>
             <Header />
             <hr />
-            <div className="drawer h-auto drawer-mobile shadow-lg">
+            <div className="drawer h-[200vh] drawer-mobile shadow-lg">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     {/* <!-- Page content here --> */}
