@@ -9,7 +9,7 @@ const Footer = () => {
     return (
         <footer className="footer p-10 bg-base-100 text-base-content dark:bg-primary dark:text-white">
             <div>
-                <img className='-ml-10 md:ml-0' src={theme === "dark" ? darkLogo : lightLogo} alt="" />
+                <img className='-ml-10 md:ml-0' src={theme === "dark" ? darkLogo : lightLogo} alt="footer logo" />
                 <p className='md:ml-12 text-lg'>Dream Car<br />Buy or sell your car easily.</p>
             </div>
             <div>
