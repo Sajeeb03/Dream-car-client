@@ -1,20 +1,29 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import car from "../../../assets/login/car.gif"
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useToken from '../../../Hooks/useToken';
 import SocialLogin from '../SocialLogin/SocialLogin';
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [generalError, setGeneralError] = useState('');
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [userEmail, setUserEmail] = useState('');
+    const [token] = useToken(userEmail);
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || "/";
+
+    if (token) {
+        navigate(from, { replace: true })
+    }
     const handleLogin = async data => {
         // console.log(data)
         try {
             const res = await login(data.email, data.password);
-            navigate('/');
+            setUserEmail(data.email)
             toast.success("Login successful")
         } catch (error) {
             setGeneralError(error.message)

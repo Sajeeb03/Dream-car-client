@@ -6,16 +6,24 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import useToken from '../../../Hooks/useToken';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [generalError, setGeneralError] = useState('');
     const { registration, updateUser } = useContext(AuthContext);
+    const [userEmail, setUserEmail] = useState('');
+    const [token] = useToken(userEmail);
     const navigate = useNavigate();
+
+    if (token) {
+        navigate("/");
+    }
 
     const handleRegistration = async data => {
         const res = await registration(data.email, data.password);
         const updatedUser = await updateUser(data.name)
+        setUserEmail(data.email)
         const user = res.user;
 
         const userInfo = {
@@ -27,7 +35,6 @@ const Register = () => {
         const result = await axios.put(`http://localhost:5000/users?email=${data.email}`, userInfo)
         if (result.data.success) {
             toast.success("Login successful");
-            navigate('/')
         }
     }
     return (
