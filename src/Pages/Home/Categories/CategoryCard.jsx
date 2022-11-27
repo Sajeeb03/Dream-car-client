@@ -13,7 +13,7 @@ const CategoryCard = ({ category }) => {
                 </h2>
                 <p className='text-left dark:text-secondary font-semibold'>We have more used cars of this company. Click the button to explore more.</p>
                 <div className='flex justify-end'>
-                    <Link to={`category/${_id}`}>
+                    <Link to={`category/${name}`}>
                         <Button name={'Explore Now'}></Button>
                     </Link>
                 </div>

@@ -3,6 +3,7 @@ import AddACar from "../Pages/Dashboard/AddACar/AddACar";
 import AllBuyers from "../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/Dashboard/AllSellers/AllSellers";
 import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
+import MyProducts from "../Pages/Dashboard/MyProducts/MyProducts";
 import Cars from "../Pages/Home/Categories/Cars";
 import Home from "../Pages/Home/Home/Home";
 import DashboardLayout from "../Pages/Layouts/DashboardLayout/DashboardLayout";
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/addacar",
                 element: <SellerRoute><AddACar /></SellerRoute>
+            },
+            {
+                path: "/dashboard/myproducts",
+                element: <SellerRoute><MyProducts /></SellerRoute>
             },
             {
                 path: "/dashboard/orders",
