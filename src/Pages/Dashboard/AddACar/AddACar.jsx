@@ -11,7 +11,7 @@ import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const AddACar = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
     const currentDate = new Date();
     const date = format(currentDate, "PP");
@@ -69,6 +69,11 @@ const AddACar = () => {
                             if (res.data.success) {
                                 toast.success(res.data.message);
                                 navigate('/dashboard/myproducts');
+                            }
+                        })
+                        .catch(err => {
+                            if (err.response.status) {
+                                logOut();
                             }
                         })
                 }

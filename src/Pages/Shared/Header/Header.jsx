@@ -21,6 +21,10 @@ const Header = () => {
         }
     }
     const menuItems = <>
+        <div className='mr-3 ml-4 md:ml-0 flex gap-3 items-center'>
+            <label className='dark:md:text-white font-serif'>{theme === "dark" ? "Light" : "Dark"}</label>
+            <ReactSwitch checked={theme === "dark"} onChange={toggleTheme} />
+        </div>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
         {
@@ -45,14 +49,13 @@ const Header = () => {
                 <Link to={`/`} className="w-64 -m-8"><img src={theme === "dark" ? darkLogo : lightLogo} alt="main logo" /></Link>
             </div>
             <div className="navbar-end">
-                <div className='mr-3 flex gap-3'>
-                    <label className='dark:text-white font-serif'>{theme === "dark" ? "Light" : "Dark"}</label>
-                    <ReactSwitch checked={theme === "dark"} onChange={toggleTheme} />
-                </div>
                 <ul className="menu menu-horizontal p-0 hidden lg:flex dark:text-white">
                     {menuItems}
                 </ul>
             </div>
+            <label tabIndex={0} htmlFor="dashboardDrawer" className="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
         </div>
     );
 };

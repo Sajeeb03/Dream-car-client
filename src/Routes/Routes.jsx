@@ -11,6 +11,7 @@ import Layout from '../Pages/Layouts/MainLayout/Layout';
 import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
 import AdminRoute from "./AdminRoute";
+import BuyerRoute from "./BuyerRoute";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
 
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/orders",
-                element: <MyOrders />
+                element: <BuyerRoute> <MyOrders /></BuyerRoute>
             },
             {
                 path: "/dashboard/buyers",
