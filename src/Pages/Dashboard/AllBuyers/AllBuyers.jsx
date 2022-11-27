@@ -54,40 +54,42 @@ const AllBuyers = () => {
         return <Loader />
     }
     return (
-        <div className="overflow-x-auto mt-3">
-            <table className="table w-full">
-
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Delete Buyer</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        buyers.map((buyer, i) => <tr className="hover">
-                            <th>{i + 1}</th>
-                            <td>{buyer.name}</td>
-                            <td>{buyer.email}</td>
-                            <td><label
-                                htmlFor="deleteModal"
-                                onClick={() => setBuyerInfo(buyer)}
-                                className='btn btn-xs btn-error'>Delete</label></td>
-                        </tr>)
-                    }
-                </tbody>
-            </table>
-            {
-                buyerInfo && <ConfirmationModal
-                    title={`Are You Sure You Want to delete ${buyerInfo.name}?`}
-                    message={`Remember! You can't undo the operation.`}
-                    closeModal={closeModal}
-                    modalData={buyerInfo}
-                    operation={handleDelete}
-                />
-            }
+        <div>
+            <h3 className="text-3xl font-bold text-center my-3">Buyers List</h3>
+            <div className="overflow-x-auto mt-3">
+                <table className="table w-full">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Delete Buyer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            buyers.map((buyer, i) => <tr className="hover">
+                                <th>{i + 1}</th>
+                                <td>{buyer.name}</td>
+                                <td>{buyer.email}</td>
+                                <td><label
+                                    htmlFor="deleteModal"
+                                    onClick={() => setBuyerInfo(buyer)}
+                                    className='btn btn-xs btn-error'>Delete</label></td>
+                            </tr>)
+                        }
+                    </tbody>
+                </table>
+                {
+                    buyerInfo && <ConfirmationModal
+                        title={`Are You Sure You Want to delete ${buyerInfo.name}?`}
+                        message={`Remember! You can't undo the operation.`}
+                        closeModal={closeModal}
+                        modalData={buyerInfo}
+                        operation={handleDelete}
+                    />
+                }
+            </div>
         </div>
     );
 };

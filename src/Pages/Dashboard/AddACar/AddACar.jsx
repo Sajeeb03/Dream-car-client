@@ -25,6 +25,27 @@ const AddACar = () => {
         }
     })
 
+    const { data: seller } = useQuery({
+        queryKey: ['seller'],
+        queryFn: async () => {
+            try {
+                const res = await axios(`http://localhost:5000/seller/${user?.email}`, {
+                    headers: {
+                        'content-type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                    }
+                })
+                return res.data;
+            } catch (error) {
+                if (error.response.status) {
+                    logOut()
+                }
+            }
+        }
+    })
+
+    console.log(seller)
+
     if (isLoading) {
         return <Loader />
     }
@@ -44,13 +65,15 @@ const AddACar = () => {
                 if (imageData.success) {
                     // console.log(imageData.data.url)
                     const product = {
-
                         name: data.name,
-                        seller: user?.displayName,
-                        sellerEmail: user?.email,
+                        seller: seller.name,
+                        sellerEmail: seller.email,
+                        sellerId: seller._id,
+                        verified: seller.verified,
                         category: data.category,
                         condition: data.condition,
                         yearsOfUse: Number(data.yearsOfUse),
+                        yearOfPurchase: data.yearOfPurchase,
                         sellingPrice: Number(data.sellingPrice),
                         buyingPrice: Number(data.buyingPrice),
                         location: data.location,
@@ -106,6 +129,13 @@ const AddACar = () => {
                     <option>Good</option>
                     <option>Fair</option>
                 </select>
+                <label className="label">
+                    <span className="label-text">Year of Purchasing</span>
+                </label>
+                <input type="text" {...register("yearOfPurchase", { required: "yearsOfPurchase field is required" })} className="input input-bordered w-full" />
+                {
+                    errors?.yearOfPurchase && <p className="text-error">{errors?.yearOfPurchase?.message}</p>
+                }
                 <label className="label">
                     <span className="label-text">Years of use.</span>
                 </label>

@@ -1,16 +1,27 @@
 import axios from 'axios';
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGoogle } from "react-icons/fa";
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useToken from '../../../Hooks/useToken';
 const SocialLogin = ({ setGeneralError }) => {
     const googleProvider = new GoogleAuthProvider();
     const { googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [userEmail, setUserEmail] = useState("");
+    const [token] = useToken(userEmail)
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || "/";
 
+    if (token) {
+        navigate(from, { replace: true })
+    }
     const handleGoogleSignIn = async () => {
         try {
             const res = await googleSignIn(googleProvider);
             // console.log(res.user)
+            setUserEmail(res.user.email)
             const user = res.user;
 
             const userInfo = {

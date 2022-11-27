@@ -21,20 +21,25 @@ const Register = () => {
     }
 
     const handleRegistration = async data => {
-        const res = await registration(data.email, data.password);
-        const updatedUser = await updateUser(data.name)
-        setUserEmail(data.email)
-        const user = res.user;
+        try {
+            const res = await registration(data.email, data.password);
+            const updatedUser = await updateUser(data.name)
+            setUserEmail(data.email)
+            const user = res.user;
 
-        const userInfo = {
-            name: user.displayName,
-            email: user.email,
-            role: data.role
-        }
+            const userInfo = {
+                name: user.displayName,
+                email: user.email,
+                role: data.role
+            }
 
-        const result = await axios.put(`http://localhost:5000/users?email=${data.email}`, userInfo)
-        if (result.data.success) {
-            toast.success("Login successful");
+            const result = await axios.put(`http://localhost:5000/users?email=${data.email}`, userInfo)
+            if (result.data.success) {
+                toast.success("Login successful");
+                setGeneralError('')
+            }
+        } catch (error) {
+            setGeneralError(error.message)
         }
     }
     return (
