@@ -2,6 +2,7 @@ import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
+import CarPhoto from '../CarPhoto/CarPhoto';
 
 import Categories from '../Categories/Categories';
 import Promotion from '../Promotion/Promotion';
@@ -30,7 +31,7 @@ const Home = () => {
             {
                 advertise?.length !== 0 && <Promotion advertise={advertise} />
             }
-
+            <CarPhoto />
         </div>
     );
 };

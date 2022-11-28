@@ -37,7 +37,7 @@ const Cars = () => {
     return (
         <div>
             <h3 className='text-center mt-5 mb-2 text-3xl font-bold dark:text-white'>Available <span className='text-primary dark:text-info'>{categoryName}</span> Cars!</h3>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-2'>
                 {
                 cars.map(car => <CarsCard
                     key={car._id}

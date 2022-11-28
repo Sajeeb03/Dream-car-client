@@ -20,7 +20,7 @@ const Promotion = ({ advertise }) => {
             <div className='w-full m-auto'>
                 <Slider {...settings}>
                     {advertise?.map(adv => <div key={adv._id} className="">
-                        <img src={adv.image} className="w-full h-[400px] rounded-lg" alt="" />
+                        <img src={adv.image} className="w-full h-[140px] md:h-[400px] rounded-lg" alt="" />
                     </div>)}
                 </Slider>
             </div>
