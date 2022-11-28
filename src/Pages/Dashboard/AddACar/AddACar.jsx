@@ -18,7 +18,7 @@ const AddACar = () => {
     const { data: categories = [], isLoading } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
-            const res = await axios('http://localhost:5000/categories');
+            const res = await axios('https://dream-car-server-sajeeb03.vercel.app/categories');
             const data = res.data;
             // console.log(data.data)
             return data.data
@@ -29,7 +29,7 @@ const AddACar = () => {
         queryKey: ['seller'],
         queryFn: async () => {
             try {
-                const res = await axios(`http://localhost:5000/seller/${user?.email}`, {
+                const res = await axios(`https://dream-car-server-sajeeb03.vercel.app/seller/${user?.email}`, {
                     headers: {
                         'content-type': 'application/json',
                         authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -82,7 +82,7 @@ const AddACar = () => {
                         postingDate: date
                     }
 
-                    axios.post("http://localhost:5000/cars", product, {
+                    axios.post("https://dream-car-server-sajeeb03.vercel.app/cars", product, {
                         headers: {
                             "content-type": "application/json",
                             authorization: `Bearer ${localStorage.getItem("accessToken")}`

@@ -13,7 +13,7 @@ const MyProducts = () => {
         queryKey: ["cars", user?.email],
         queryFn: async () => {
             try {
-                const res = await axios(`http://localhost:5000/cars?email=${user?.email}`, {
+                const res = await axios(`https://dream-car-server-sajeeb03.vercel.app/cars?email=${user?.email}`, {
                     headers: {
                         "content-type": "application/json",
                         authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -35,7 +35,7 @@ const MyProducts = () => {
 
     const handleDelete = async car => {
         try {
-            const res = await axios.delete(`http://localhost:5000/cars/${car._id}`, {
+            const res = await axios.delete(`https://dream-car-server-sajeeb03.vercel.app/cars/${car._id}`, {
                 headers: {
                     "content-type": "application/json",
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -61,7 +61,7 @@ const MyProducts = () => {
             carId: _id,
         }
 
-        axios.post('http://localhost:5000/advertise', advertiseItem, {
+        axios.post('https://dream-car-server-sajeeb03.vercel.app/advertise', advertiseItem, {
             headers: {
                 "content-type": "application/json",
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -86,7 +86,7 @@ const MyProducts = () => {
     const handleAvailableProduct = async (id) => {
         const updateData = { sold: true }
         try {
-            const res = await axios.put(`http://localhost:5000/cars/${id}`, updateData, {
+            const res = await axios.put(`https://dream-car-server-sajeeb03.vercel.app/cars/${id}`, updateData, {
                 headers: {
                     "content-type": "application/json",
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`

@@ -21,7 +21,7 @@ const BookingModal = ({ modalData, setModalData }) => {
             location: form.location.value,
         }
 
-        axios.post("http://localhost:5000/orders", orderedProduct, {
+        axios.post("https://dream-car-server-sajeeb03.vercel.app/orders", orderedProduct, {
             headers: {
                 "content-type": "application/json",
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`

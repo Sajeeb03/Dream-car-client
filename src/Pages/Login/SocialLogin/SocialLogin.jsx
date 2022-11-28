@@ -29,7 +29,7 @@ const SocialLogin = ({ setGeneralError }) => {
                 email: user.email,
                 role: "buyer"
             }
-            axios.put(`http://localhost:5000/users?email=${user.email}`, userInfo)
+            axios.put(`https://dream-car-server-sajeeb03.vercel.app/users?email=${user.email}`, userInfo)
                 .then(res => console.log(res.data))
             setGeneralError('')
         } catch (error) {

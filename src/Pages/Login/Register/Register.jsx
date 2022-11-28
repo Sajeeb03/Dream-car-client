@@ -33,7 +33,7 @@ const Register = () => {
                 role: data.role
             }
 
-            const result = await axios.put(`http://localhost:5000/users?email=${data.email}`, userInfo)
+            const result = await axios.put(`https://dream-car-server-sajeeb03.vercel.app/users?email=${data.email}`, userInfo)
             if (result.data.success) {
                 toast.success("Login successful");
                 setGeneralError('')

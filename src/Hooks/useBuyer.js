@@ -7,7 +7,7 @@ const useBuyer = (email) => {
 
     useEffect(() => {
         if (email) {
-            axios(`http://localhost:5000/users/buyer/${email}`)
+            axios(`https://dream-car-server-sajeeb03.vercel.app/users/buyer/${email}`)
                 .then(res => {
                     setIsBuyer(res.data.isBuyer)
                     setBuyerLoading(false)

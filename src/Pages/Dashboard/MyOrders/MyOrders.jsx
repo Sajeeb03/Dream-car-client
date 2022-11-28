@@ -11,7 +11,7 @@ const MyOrders = () => {
         queryKey: ["orders"],
         queryFn: async () => {
             try {
-                const res = await axios(`http://localhost:5000/orders?email=${user?.email}`, {
+                const res = await axios(`https://dream-car-server-sajeeb03.vercel.app/orders?email=${user?.email}`, {
                     headers: {
                         "content-type": "application/json",
                         authorization: `Bearer ${localStorage.getItem("accessToken")}`

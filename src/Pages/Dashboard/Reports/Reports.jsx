@@ -11,7 +11,7 @@ const Reports = () => {
         queryKey: ["reports"],
         queryFn: async () => {
             try {
-                const res = await axios(`http://localhost:5000/reports`, {
+                const res = await axios(`https://dream-car-server-sajeeb03.vercel.app/reports`, {
                     headers: {
                         "content-type": "application/json",
                         authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -28,7 +28,7 @@ const Reports = () => {
 
     const handleDelete = async report => {
         try {
-            const res = await axios.delete(`http://localhost:5000/reports/${report.id}`, {
+            const res = await axios.delete(`https://dream-car-server-sajeeb03.vercel.app/reports/${report.id}`, {
                 headers: {
                     "content-type": "application/json",
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`

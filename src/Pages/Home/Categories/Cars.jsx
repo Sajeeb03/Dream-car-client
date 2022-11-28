@@ -16,7 +16,7 @@ const Cars = () => {
         queryKey: ['cars', categoryName],
         queryFn: async () => {
             try {
-                const res = await axios(`http://localhost:5000/cars/${categoryName}`, {
+                const res = await axios(`https://dream-car-server-sajeeb03.vercel.app/cars/${categoryName}`, {
                     headers: {
                         "content-type": "application/json",
                         authorization: `Bearer ${localStorage.getItem("accessToken")}`

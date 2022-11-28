@@ -14,7 +14,7 @@ const Home = () => {
         queryKey: ["advertise"],
         queryFn: async () => {
             try {
-                const res = await axios(`http://localhost:5000/advertise`)
+                const res = await axios(`https://dream-car-server-sajeeb03.vercel.app/advertise`)
                 return res.data.data;
             } catch (error) {
                 console.log(error)

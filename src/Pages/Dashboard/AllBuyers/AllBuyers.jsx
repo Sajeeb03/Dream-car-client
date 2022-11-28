@@ -13,7 +13,7 @@ const AllBuyers = () => {
         queryKey: ["allBuyers"],
         queryFn: async () => {
             try {
-                const res = await axios('http://localhost:5000/users/buyer', {
+                const res = await axios('https://dream-car-server-sajeeb03.vercel.app/users/buyer', {
                     headers: {
                         "content-type": "application/json",
                         authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -30,7 +30,7 @@ const AllBuyers = () => {
 
     const handleDelete = buyer => {
         // console.log(id)
-        axios.delete(`http://localhost:5000/users/${buyer._id}`, {
+        axios.delete(`https://dream-car-server-sajeeb03.vercel.app/users/${buyer._id}`, {
             headers: {
                 "content-type": "application/json",
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`

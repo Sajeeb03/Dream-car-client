@@ -13,7 +13,7 @@ const CarsCard = ({ car, setModalData }) => {
     const handleReportToAdmin = async car => {
         const item = { id: car._id, ...car }
         try {
-            const res = await axios.post(`http://localhost:5000/reports`, item, {
+            const res = await axios.post(`https://dream-car-server-sajeeb03.vercel.app/reports`, item, {
                 headers: {
                     "content-type": "application/json",
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`

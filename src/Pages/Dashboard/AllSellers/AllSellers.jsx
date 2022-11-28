@@ -15,7 +15,7 @@ const AllSellers = () => {
         queryKey: ["sellers"],
         queryFn: async () => {
             try {
-                const res = await axios('http://localhost:5000/users/seller', {
+                const res = await axios('https://dream-car-server-sajeeb03.vercel.app/users/seller', {
                     headers: {
                         "content-type": "application/json",
                         authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -35,7 +35,7 @@ const AllSellers = () => {
     }
 
     const handleDelete = seller => {
-        axios.delete(`http://localhost:5000/users/${seller._id}`, {
+        axios.delete(`https://dream-car-server-sajeeb03.vercel.app/users/${seller._id}`, {
             headers: {
                 "content-type": "application/json",
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -58,7 +58,7 @@ const AllSellers = () => {
         // console.log(id)
         const update = { verified: true }
         try {
-            const res = await axios.put(`http://localhost:5000/seller/${id}`, update, {
+            const res = await axios.put(`https://dream-car-server-sajeeb03.vercel.app/seller/${id}`, update, {
                 headers: {
                     "content-type": "application/json",
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`
