@@ -15,6 +15,7 @@ const BookingModal = ({ modalData, setModalData }) => {
             email: form.email.value,
             product: form.product.value,
             productId: modalData._id,
+            img: modalData.image,
             price: form.price.value,
             phone: form.phone.value,
             location: form.location.value,

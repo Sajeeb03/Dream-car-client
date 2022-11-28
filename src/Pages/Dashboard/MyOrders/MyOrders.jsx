@@ -1,25 +1,41 @@
-import { format } from 'date-fns';
-import React, { useState } from 'react';
-import { DayPicker } from 'react-day-picker';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import OrderCard from './OrderCard';
+
 
 const MyOrders = () => {
-    const [selected, setSelected] = useState(new Date());
-    const [open, setOpen] = useState(false)
-    const date = new Date();
+    const { user, logOut } = useContext(AuthContext);
+    const { data: orders = [] } = useQuery({
+        queryKey: ["orders"],
+        queryFn: async () => {
+            try {
+                const res = await axios(`http://localhost:5000/orders?email=${user?.email}`, {
+                    headers: {
+                        "content-type": "application/json",
+                        authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                    }
+                })
+                return res.data.data;
+            } catch (error) {
+                if (error?.response?.status) {
+                    logOut();
+                }
+            }
+        }
+    })
     return (
         <div>
-            <button onClick={(() => setOpen(!open))} className="btn btn-primary">Open</button>
-            {
-                open && <div onClick={() => setOpen(false)}>
-                    <DayPicker
-                        mode="single"
-                        selected={selected}
-                        onSelect={setSelected}
-                    />
-                </div>
-            }
-            <p>{format(date, "PP")}</p>
-            <p>{format(selected, "PP")}</p>
+            <h3 className="text-3xl font-bold text-center my-4">My Orders</h3>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 p-4'>
+                {
+                    orders.map(order => <OrderCard
+                        key={order._id}
+                        order={order}
+                    />)
+                }
+            </div>
         </div>
     );
 };
