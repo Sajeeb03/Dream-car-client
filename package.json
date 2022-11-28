@@ -20,8 +20,10 @@
     "react-hook-form": "^7.39.5",
     "react-icons": "^4.6.0",
     "react-router-dom": "^6.4.3",
+    "react-slick": "^0.29.0",
     "react-switch": "^7.0.0",
     "react-toastify": "^9.1.1",
+    "slick-carousel": "^1.8.1",
     "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
