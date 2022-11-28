@@ -44,7 +44,7 @@ const AddACar = () => {
         }
     })
 
-    console.log(seller)
+    // console.log(seller)
 
     if (isLoading) {
         return <Loader />
@@ -69,7 +69,7 @@ const AddACar = () => {
                         seller: seller.name,
                         sellerEmail: seller.email,
                         sellerId: seller._id,
-                        verified: seller.verified,
+                        verified: seller?.verified,
                         category: data.category,
                         condition: data.condition,
                         yearsOfUse: Number(data.yearsOfUse),
