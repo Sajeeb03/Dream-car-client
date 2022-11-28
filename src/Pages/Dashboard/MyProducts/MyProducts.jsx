@@ -68,8 +68,10 @@ const MyProducts = () => {
             }
         })
             .then(res => {
+                console.log(res.data)
                 if (res.data.success) {
                     toast.success("Item advertised")
+                    refetch();
                 }
             })
             .catch(error => {
@@ -126,7 +128,7 @@ const MyProducts = () => {
                                 <th>{i + 1}</th>
                                 <td>{car.name}</td>
                                 <td>{car.sold ? <btn className="btn btn-xs btn-primary disabled">Sold</btn> : <btn onClick={() => handleAvailableProduct(car._id)} className="btn btn-xs btn-primary">Available</btn>}</td>
-                                <td>{car.sold ? <btn className="btn btn-xs btn-primary disabled">Unavailable</btn> : <btn className="btn btn-xs btn-primary" onClick={() => handleAdvertise(car)}>Advertise</btn>}</td>
+                                <td>{car.sold ? <btn className="btn btn-xs btn-primary disabled">Unavailable</btn> : <btn className="btn btn-xs btn-primary" disabled={car.advertised} onClick={() => handleAdvertise(car)}>{car.advertised ? "Advertised" : "Advertise"}</btn>}</td>
                                 <td><label htmlFor='deleteModal' onClick={() => setCarInfo(car)} className='btn btn-xs btn-error'>Delete</label></td>
                             </tr>)
                         }

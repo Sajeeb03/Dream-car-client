@@ -1,12 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import BookingModal from '../../../components/BookingModal';
 import Loader from '../../../components/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import CarsCard from './CarsCard';
 
 const Cars = () => {
+    const [modalData, setModalData] = useState(null)
     const route = useParams();
     const { logOut } = useContext(AuthContext)
     const categoryName = route.id;
@@ -40,9 +42,15 @@ const Cars = () => {
                 cars.map(car => <CarsCard
                     key={car._id}
                     car={car}
+                    setModalData={setModalData}
                 />)
             }
             </div>
+            {
+                modalData && <BookingModal
+                    modalData={modalData}
+                    setModalData={setModalData}
+                />}
         </div>
     );
 };
