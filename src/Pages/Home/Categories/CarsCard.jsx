@@ -11,7 +11,12 @@ const CarsCard = ({ car, setModalData }) => {
     const { name, image, seller, location, buyingPrice, sellingPrice, yearsOfUse, verified, _id } = car;
 
     const handleReportToAdmin = async car => {
-        const item = { id: car._id, ...car }
+        const { name, _id, seller } = car;
+        const item = {
+            name,
+            seller,
+            carId: _id,
+        }
         try {
             const res = await axios.post(`https://dream-car-server-sajeeb03.vercel.app/reports`, item, {
                 headers: {

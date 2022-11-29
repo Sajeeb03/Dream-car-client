@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.15.0",
+    "@stripe/stripe-js": "^1.44.1",
     "@tanstack/react-query": "^4.16.1",
     "axios": "^1.2.0",
     "daisyui": "^2.42.0",
@@ -24,6 +26,7 @@
     "react-switch": "^7.0.0",
     "react-toastify": "^9.1.1",
     "slick-carousel": "^1.8.1",
+    "stripe": "^11.1.0",
     "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {

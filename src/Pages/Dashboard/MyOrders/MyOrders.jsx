@@ -1,13 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext } from 'react';
+import Loader from '../../../components/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import OrderCard from './OrderCard';
 
 
 const MyOrders = () => {
     const { user, logOut } = useContext(AuthContext);
-    const { data: orders = [] } = useQuery({
+    const { data: orders = [], isLoading } = useQuery({
         queryKey: ["orders"],
         queryFn: async () => {
             try {
@@ -25,6 +26,10 @@ const MyOrders = () => {
             }
         }
     })
+
+    if (isLoading) {
+        return <Loader />
+    }
     return (
         <div>
             <h3 className="text-3xl font-bold text-center my-4">My Orders</h3>

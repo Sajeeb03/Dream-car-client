@@ -27,8 +27,9 @@ const Reports = () => {
     })
 
     const handleDelete = async report => {
+
         try {
-            const res = await axios.delete(`https://dream-car-server-sajeeb03.vercel.app/reports/${report.id}`, {
+            const res = await axios.delete(`https://dream-car-server-sajeeb03.vercel.app/reports/${report.carId}`, {
                 headers: {
                     "content-type": "application/json",
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -57,6 +58,7 @@ const Reports = () => {
                         <tr>
                             <th></th>
                             <th>Car Name</th>
+                            <th>Seller</th>
                             <th>Sale Status</th>
                             <th>Delete</th>
                         </tr>
@@ -65,7 +67,8 @@ const Reports = () => {
                         {
                             reports.map((report, i) => <tr key={report._id} className="hover">
                                 <th>{i + 1}</th>
-                                <td>{report.name}</td>
+                                <td>{report.name}</td> 
+                                <td>{report.seller}</td> 
                                 <td>{report.sold ? <btn className="btn btn-xs btn-primary disabled">Sold</btn> : <btn className="btn btn-xs btn-primary">Available</btn>}</td>
                                 <td><label onClick={() => handleDelete(report)} className='btn btn-xs btn-error'>Delete</label></td>
                             </tr>)
