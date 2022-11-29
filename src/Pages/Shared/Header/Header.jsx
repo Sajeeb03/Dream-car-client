@@ -5,8 +5,9 @@ import { ToggleContext } from '../../../Contexts/ThemeSwitch/ThemeSwitch';
 import lightLogo from '../../../assets/lightLogo.png'
 import darkLogo from '../../../assets/darkLogo.png'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import { FaHome } from 'react-icons/fa';
 
-const Header = () => {
+const Header = ({ children }) => {
     const { theme, setTheme } = useContext(ToggleContext);
     const { user, logOut } = useContext(AuthContext);
     const toggleTheme = () => {
@@ -46,16 +47,17 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to={`/`} className="w-64 -m-8"><img src={theme === "dark" ? darkLogo : lightLogo} alt="main logo" /></Link>
+                <Link to={`/`} className="w-64 h-12 -m-8"><img src={theme === "dark" ? darkLogo : lightLogo} alt="main logo" /></Link>
             </div>
             <div className="navbar-end">
                 <ul className="menu menu-horizontal p-0 hidden lg:flex dark:text-white">
                     {menuItems}
                 </ul>
             </div>
-            <label tabIndex={0} htmlFor="dashboardDrawer" className="btn btn-ghost lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-            </label>
+            {children &&
+                <label tabIndex={0} htmlFor="dashboardDrawer" className="btn btn-ghost lg:hidden">
+                    <FaHome className='h-6 w-6' />
+                </label>}
         </div>
     );
 };

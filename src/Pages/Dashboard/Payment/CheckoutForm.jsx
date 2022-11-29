@@ -87,7 +87,7 @@ const CheckoutForm = ({ order }) => {
                 price,
                 order: _id,
                 transactionId: paymentIntent.id,
-                order: product
+                product: product
             }
 
             const res = await axios.post(`https://dream-car-server-sajeeb03.vercel.app/payments/${_id}`, payment, {

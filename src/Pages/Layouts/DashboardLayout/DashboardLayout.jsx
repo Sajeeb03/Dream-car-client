@@ -14,7 +14,7 @@ const DashboardLayout = () => {
     const [isBuyer] = useBuyer(user?.email)
     return (
         <div>
-            <Header />
+            <Header>{true}</Header>
             <hr />
             <div className="drawer h-[200vh] drawer-mobile shadow-lg">
                 <input id="dashboardDrawer" type="checkbox" className="drawer-toggle" />
@@ -27,9 +27,7 @@ const DashboardLayout = () => {
                     <label htmlFor="dashboardDrawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 md:bg-neutral dark:text-white text-md font-semibold text-base-content">
                         {/* <!-- Sidebar content here --> */}
-                        <li><p className='font-semibold text-xl'>
-                            <FaHome></FaHome> Dashboard
-                        </p></li>
+                        <li><Link to='/dashboard/'><p className='font-semibold text-xl flex gap-2 items-center'><FaHome></FaHome> Dashboard</p></Link></li>
                         {
                             isBuyer && <>
                                 <li><Link to='/dashboard/orders'>My Orders</Link></li>

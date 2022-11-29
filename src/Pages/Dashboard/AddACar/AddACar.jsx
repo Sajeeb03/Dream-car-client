@@ -8,6 +8,8 @@ import { toast } from 'react-toastify';
 
 import Loader from '../../../components/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useScrollToTop from '../../../Hooks/useScrollToTop';
+import useTitle from '../../../Hooks/useTitle';
 
 const AddACar = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -46,9 +48,7 @@ const AddACar = () => {
 
     // console.log(seller)
 
-    if (isLoading) {
-        return <Loader />
-    }
+
     const handleAddACar = data => {
         // console.log(data.img[0]);
         const image = data.img[0];
@@ -101,6 +101,13 @@ const AddACar = () => {
                         })
                 }
             })
+    }
+
+    useScrollToTop();
+    useTitle("Dashboard", "Add A Car")
+
+    if (isLoading) {
+        return <Loader />
     }
     return (
         <div className='dark:bg-blue-300 my-4 md:w-2/3 p-6'>

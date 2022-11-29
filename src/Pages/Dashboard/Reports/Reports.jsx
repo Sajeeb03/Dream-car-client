@@ -4,6 +4,8 @@ import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
 import Loader from '../../../components/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useScrollToTop from '../../../Hooks/useScrollToTop';
+import useTitle from '../../../Hooks/useTitle';
 
 const Reports = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -45,6 +47,9 @@ const Reports = () => {
             }
         }
     }
+
+    useScrollToTop();
+    useTitle("Dashboard", "Reports")
 
     if (isLoading) {
         return <Loader />

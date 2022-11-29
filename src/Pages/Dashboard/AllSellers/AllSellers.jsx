@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 import ConfirmationModal from '../../../components/ConfirmationModal';
 import Loader from '../../../components/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useScrollToTop from '../../../Hooks/useScrollToTop';
+import useTitle from '../../../Hooks/useTitle';
 
 const AllSellers = () => {
     const { logOut } = useContext(AuthContext);
@@ -76,6 +78,10 @@ const AllSellers = () => {
         }
 
     }
+
+    useScrollToTop();
+    useTitle("Dashboard", "All Sellers")
+
     if (isLoading) {
         return <Loader />
     }

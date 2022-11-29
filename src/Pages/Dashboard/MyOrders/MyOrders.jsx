@@ -3,6 +3,8 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import Loader from '../../../components/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useScrollToTop from '../../../Hooks/useScrollToTop';
+import useTitle from '../../../Hooks/useTitle';
 import OrderCard from './OrderCard';
 
 
@@ -26,6 +28,9 @@ const MyOrders = () => {
             }
         }
     })
+
+    useScrollToTop();
+    useTitle("Dashboard", "My Order")
 
     if (isLoading) {
         return <Loader />

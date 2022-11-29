@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import ConfirmationModal from '../../../components/ConfirmationModal';
 import Loader from '../../../components/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useScrollToTop from '../../../Hooks/useScrollToTop';
+import useTitle from '../../../Hooks/useTitle';
 
 const AllBuyers = () => {
     const { logOut } = useContext(AuthContext);
@@ -50,6 +52,11 @@ const AllBuyers = () => {
     const closeModal = () => {
         setBuyerInfo(null)
     }
+
+    useScrollToTop();
+    useTitle("Dashboard", "All Buyers")
+
+
     if (isLoading) {
         return <Loader />
     }

@@ -2,6 +2,8 @@ import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
+import useScrollToTop from '../../../Hooks/useScrollToTop';
+import useTitle from '../../../Hooks/useTitle';
 import CarPhoto from '../CarPhoto/CarPhoto';
 
 import Categories from '../Categories/Categories';
@@ -22,7 +24,8 @@ const Home = () => {
             }
         }
     })
-
+    useTitle("Dream Car", "Home");
+    useScrollToTop();
 
     return (
         <div>

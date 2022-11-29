@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import BookingModal from '../../../components/BookingModal';
 import Loader from '../../../components/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useScrollToTop from '../../../Hooks/useScrollToTop';
+import useTitle from '../../../Hooks/useTitle';
 import CarsCard from './CarsCard';
 
 const Cars = () => {
@@ -30,7 +32,8 @@ const Cars = () => {
             }
         }
     });
-
+    useTitle("Dream Car", `Products`)
+    useScrollToTop();
     if (isLoading) {
         return <Loader />
     }

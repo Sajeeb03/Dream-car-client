@@ -1,6 +1,10 @@
 import React from 'react';
+import useScrollToTop from '../../Hooks/useScrollToTop';
+import useTitle from '../../Hooks/useTitle';
 
 const Blogs = () => {
+    useScrollToTop();
+    useTitle("Dream Car", 'Blogs')
     const blogItems = [
         {
             id: 1,
