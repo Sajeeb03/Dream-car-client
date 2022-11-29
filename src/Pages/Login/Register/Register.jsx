@@ -7,6 +7,8 @@ import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import useToken from '../../../Hooks/useToken';
+import useScrollToTop from '../../../Hooks/useScrollToTop';
+import useTitle from '../../../Hooks/useTitle';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -42,6 +44,9 @@ const Register = () => {
             setGeneralError(error.message)
         }
     }
+
+    useScrollToTop();
+    useTitle("Dream Car", "Sign Up")
     return (
         <div className="hero my-2 md:my-12">
             <div className="hero-content">

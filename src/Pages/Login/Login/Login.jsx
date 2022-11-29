@@ -4,6 +4,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import car from "../../../assets/login/car.gif"
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useScrollToTop from '../../../Hooks/useScrollToTop';
+import useTitle from '../../../Hooks/useTitle';
 import useToken from '../../../Hooks/useToken';
 import SocialLogin from '../SocialLogin/SocialLogin';
 const Login = () => {
@@ -29,6 +31,9 @@ const Login = () => {
             setGeneralError(error.message)
         }
     }
+
+    useScrollToTop();
+    useTitle("Dream Car", "Login")
     return (
         <div className="hero my-2 md:my-12">
             <div className="hero-content">
