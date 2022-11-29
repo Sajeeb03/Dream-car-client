@@ -26,7 +26,7 @@ const Blogs = () => {
         }
     ]
     return (
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 px-3 md:px-0 md:my-12'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 px-3 md:px-0 my-3 md:my-12'>
             {blogItems.map(item => <div
                 className='bg-base-100 shadow-2xl dark:bg-blue-300 rounded-lg p-8'
                 key={item.id}>

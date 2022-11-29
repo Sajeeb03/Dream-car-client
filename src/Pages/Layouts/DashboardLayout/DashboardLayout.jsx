@@ -25,7 +25,7 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboardDrawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100 md:bg-neutral dark:text-white text-md font-semibold text-base-content">
+                    <ul className="menu p-4 w-80 bg-base-100 md:bg-neutral dark:md:text-white text-md font-semibold text-base-content">
                         {/* <!-- Sidebar content here --> */}
                         <li><Link to='/dashboard/'><p className='font-semibold text-xl flex gap-2 items-center'><FaHome></FaHome> Dashboard</p></Link></li>
                         {

@@ -47,7 +47,7 @@ const Header = ({ children }) => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to={`/`} className="w-64 h-12 -m-8"><img src={theme === "dark" ? darkLogo : lightLogo} alt="main logo" /></Link>
+                <Link to={`/`} className="w-64 -m-8"><img src={theme === "dark" ? darkLogo : lightLogo} alt="main logo" /></Link>
             </div>
             <div className="navbar-end">
                 <ul className="menu menu-horizontal p-0 hidden lg:flex dark:text-white">
@@ -56,7 +56,7 @@ const Header = ({ children }) => {
             </div>
             {children &&
                 <label tabIndex={0} htmlFor="dashboardDrawer" className="btn btn-ghost lg:hidden">
-                    <FaHome className='h-6 w-6' />
+                    <FaHome className='h-6 w-6 dark:text-white' />
                 </label>}
         </div>
     );

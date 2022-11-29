@@ -56,7 +56,7 @@ const Reports = () => {
     }
     return (
         <div>
-            <h3 className="text-3xl text-center font-bold my-3">Reports</h3>
+            <h3 className="text-3xl text-center font-bold my-3 dark:text-white">Reports</h3>
             <div className="overflow-x-auto px-3">
                 <table className="table w-full">
                     <thead className='w-full'>
