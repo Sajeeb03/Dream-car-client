@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { FaHome } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
+import Loader from '../../../components/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import useAdmin from '../../../Hooks/useAdmin';
 import useBuyer from '../../../Hooks/useBuyer';
@@ -9,9 +10,13 @@ import Header from '../../Shared/Header/Header';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    const [isAdmin] = useAdmin(user?.email);
-    const [isSeller] = useSeller(user?.email);
-    const [isBuyer] = useBuyer(user?.email)
+    const [isAdmin,adminLoading] = useAdmin(user?.email);
+    const [isSeller,sellerLoading] = useSeller(user?.email);
+    const [isBuyer,buyerLoading] = useBuyer(user?.email)
+
+    if(adminLoading || buyerLoading || sellerLoading){
+        return <Loader/>
+    }
     return (
         <div>
             <Header>{true}</Header>

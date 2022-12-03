@@ -11,7 +11,16 @@ const Header = ({ children }) => {
     const { theme, setTheme } = useContext(ToggleContext);
     const { user, logOut } = useContext(AuthContext);
     const toggleTheme = () => {
-        theme === "dark" ? setTheme("") : setTheme("dark");
+        if(theme === "dark"){
+            setTheme(""),
+            localStorage.setItem("theme","")
+        }
+        else{
+            setTheme("dark");
+            localStorage.setItem("theme","dark")
+        }
+        // theme === "dark" ? setTheme("") : setTheme("dark");
+        
     }
 
     const handleSignOut = async () => {

@@ -2,8 +2,8 @@ import React, { createContext, useEffect, useState } from 'react';
 import Layout from '../../Pages/Layouts/MainLayout/Layout';
 export const ToggleContext = createContext();
 const ThemeSwitch = ({ children }) => {
-    const [theme, setTheme] = useState('');
-
+    const [theme, setTheme] = useState(`${localStorage.getItem("theme")}`);
+console.log(theme)
     useEffect(() => {
         if (theme === "dark") {
             document.documentElement.classList.add("dark")

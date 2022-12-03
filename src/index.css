@@ -4,7 +4,8 @@
 
 
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'lato', serif;
+  /* font-family: 'Freehand', cursive; */
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
