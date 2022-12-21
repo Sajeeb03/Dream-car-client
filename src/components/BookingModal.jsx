@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useContext } from 'react';
+import { FaRegTimesCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
@@ -45,7 +46,8 @@ const BookingModal = ({ modalData, setModalData }) => {
         <div>
             <input type="checkbox" id="bookingModal" className="modal-toggle" />
             <div className="modal">
-                <div className="modal-box">
+                <div className="modal-box relative">
+                    <label htmlFor='bookingModal' className='text-primary absolute top-5 right-5'><FaRegTimesCircle className='h-8 w-8' /></label>
                     <form onSubmit={handleOrder}>
                         <label className="label label-text">
                             Name
